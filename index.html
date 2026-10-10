@@ -3,471 +3,999 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>杨天宇 - 通信俱乐部技术部竞选答辩 (11页水墨版)</title>
+<title>罗懿璇 - 通信俱乐部技术部竞选答辩 (物理级折扇展开版)</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;900&display=swap');
-
+  /* ================== 水墨五阶与古法雅色体系 ================== */
   :root {
-    --paper-bg: #f6f3eb;
-    --paper-card: rgba(255, 255, 255, 0.78);
-    --ink-black: #1d1e20;
-    --ink-gray: #4a5158;
-    --ink-light: #889098;
-    --cinnabar: #b43832;
-    --border-ink: rgba(29, 30, 32, 0.12);
+    --paper-base: #f7f3ec;
+    --paper-card: rgba(254, 252, 248, 0.90);
+    --paper-card-hover: rgba(255, 255, 252, 0.98);
+
+    /* 五阶墨色 */
+    --ink-burnt: #181b1e;
+    --ink-dark: #2c3137;
+    --ink-mid: #4d555f;
+    --ink-light: #7c8692;
+    --ink-faint: #b4bcc4;
+
+    /* 古法东方雅色 */
+    --color-cinnabar: #94322c;       /* 朱砂 */
+    --color-cinnabar-faint: #f8ebe9;
+    --color-mineral-green: #3d5245;  /* 石绿 */
+    --color-green-faint: #eef3f0;
+    --color-mineral-blue: #364853;   /* 黛蓝/石青 */
+    --color-blue-faint: #edf1f4;
+    --color-ochre: #7d5e43;          /* 赭石/竹木棕 */
+    --color-ochre-faint: #f5f0e9;
+
+    --border-ink-subtle: rgba(77, 85, 95, 0.14);
+    --shadow-ink-diffuse: 0 16px 40px rgba(44, 49, 55, 0.05);
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
+  
   body {
-    background-color: #242526;
-    font-family: 'Noto Serif SC', 'Songti SC', 'Source Han Serif SC', serif;
-    color: var(--ink-black);
+    background-color: #14171a;
+    font-family: "STKaiti", "KaiTi", "Songti SC", "Source Han Serif CN", "Noto Serif SC", serif;
+    color: var(--ink-dark);
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     overflow: hidden;
+    user-select: none;
   }
 
+  /* 幻灯片主画框 */
   .deck-container {
-    width: 980px;
-    height: 560px;
-    background: var(--paper-bg);
-    box-shadow: 0 24px 60px rgba(0,0,0,0.55);
-    border-radius: 4px;
+    width: 1000px;
+    height: 562.5px;
+    background: radial-gradient(circle at 75% 25%, #faf7f0 0%, #f4ede1 65%, #eae0d0 100%);
+    box-shadow: 0 35px 90px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.25);
+    border-radius: 8px;
     position: relative;
     overflow: hidden;
   }
 
-  /* 水墨烟岚与宣纸肌理微光 */
-  .deck-container::before {
+  /* 宣纸古裱纤巧内框线 */
+  .deck-container::after {
     content: '';
     position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at 85% 15%, rgba(180, 56, 50, 0.05) 0%, transparent 45%),
-                radial-gradient(circle at 10% 90%, rgba(29, 30, 32, 0.09) 0%, transparent 60%);
+    top: 16px; left: 16px; right: 16px; bottom: 16px;
+    border: 1px solid rgba(125, 94, 67, 0.16);
     pointer-events: none;
+    z-index: 2;
+    border-radius: 4px;
   }
 
+  /* 顶部动态毛笔行笔墨痕进度线 */
+  .ink-scroll-progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-cinnabar) 0%, var(--color-ochre) 50%, var(--color-mineral-blue) 100%);
+    z-index: 30;
+    transition: width 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+    opacity: 0.85;
+  }
+
+  /* ================== 折扇物理级“甩展”动作核心体系 ================== */
+  
+  .fan-master-wrapper {
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 780px;
+    height: 420px;
+    pointer-events: none;
+    z-index: 3;
+  }
+
+  /* 展平后的微呼吸慢旋（第3秒后平滑切入） */
+  .slide.active .fan-master-wrapper {
+    animation: fanSlowPrecession 16s ease-in-out infinite;
+    animation-delay: 2.8s;
+  }
+  @keyframes fanSlowPrecession {
+    0% { transform: translateX(-50%) rotate(0deg); }
+    25% { transform: translateX(-50%) rotate(-2.5deg); }
+    75% { transform: translateX(-50%) rotate(2.5deg); }
+    100% { transform: translateX(-50%) rotate(0deg); }
+  }
+
+  /* 扇体起势淡入 */
+  .fan-pivot {
+    position: absolute;
+    bottom: 25px;
+    left: 50%;
+    width: 0;
+    height: 0;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .slide.active .fan-pivot {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.3s;
+  }
+
+  /* 扇骨基础状态：全部闭合并偏向左侧 (-75度)，形成一束闭合的折扇 */
+  .fan-rib {
+    position: absolute;
+    bottom: 0;
+    left: calc(50% - 48px);
+    width: 96px;
+    height: 360px;
+    transform-origin: 50% 100%;
+    transform: rotate(-75deg); /* ★ 所有扇骨初始完全收拢 ★ */
+  }
+
+  /* ★ 物理级牵引展开数学模型 ★
+     最右侧主骨(nth-child 13)先动并耗时最长，拉动下一根。
+     完美计算：delay + duration = 统一 2.5s 落位停止，形成极致丝滑的“甩开”感！ */
+  .slide.active .fan-rib:nth-child(13) { transform: rotate(60deg);  transition: transform 1.50s cubic-bezier(0.18, 0.85, 0.2, 1) 1.00s; }
+  .slide.active .fan-rib:nth-child(12) { transform: rotate(50deg);  transition: transform 1.45s cubic-bezier(0.18, 0.85, 0.2, 1) 1.05s; }
+  .slide.active .fan-rib:nth-child(11) { transform: rotate(40deg);  transition: transform 1.40s cubic-bezier(0.18, 0.85, 0.2, 1) 1.10s; }
+  .slide.active .fan-rib:nth-child(10) { transform: rotate(30deg);  transition: transform 1.35s cubic-bezier(0.18, 0.85, 0.2, 1) 1.15s; }
+  .slide.active .fan-rib:nth-child(9)  { transform: rotate(20deg);  transition: transform 1.30s cubic-bezier(0.18, 0.85, 0.2, 1) 1.20s; }
+  .slide.active .fan-rib:nth-child(8)  { transform: rotate(10deg);  transition: transform 1.25s cubic-bezier(0.18, 0.85, 0.2, 1) 1.25s; }
+  .slide.active .fan-rib:nth-child(7)  { transform: rotate(0deg);   transition: transform 1.20s cubic-bezier(0.18, 0.85, 0.2, 1) 1.30s; }
+  .slide.active .fan-rib:nth-child(6)  { transform: rotate(-10deg); transition: transform 1.15s cubic-bezier(0.18, 0.85, 0.2, 1) 1.35s; }
+  .slide.active .fan-rib:nth-child(5)  { transform: rotate(-20deg); transition: transform 1.10s cubic-bezier(0.18, 0.85, 0.2, 1) 1.40s; }
+  .slide.active .fan-rib:nth-child(4)  { transform: rotate(-30deg); transition: transform 1.05s cubic-bezier(0.18, 0.85, 0.2, 1) 1.45s; }
+  .slide.active .fan-rib:nth-child(3)  { transform: rotate(-40deg); transition: transform 1.00s cubic-bezier(0.18, 0.85, 0.2, 1) 1.50s; }
+  .slide.active .fan-rib:nth-child(2)  { transform: rotate(-50deg); transition: transform 0.95s cubic-bezier(0.18, 0.85, 0.2, 1) 1.55s; }
+  .slide.active .fan-rib:nth-child(1)  { transform: rotate(-60deg); transition: transform 0.90s cubic-bezier(0.18, 0.85, 0.2, 1) 1.60s; }
+
+
+  /* 扇面宣纸褶皱 */
+  .rib-paper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 250px;
+    clip-path: polygon(36% 100%, 64% 100%, 94% 0%, 6% 0%);
+    background: linear-gradient(180deg, rgba(253, 250, 243, 0.96) 0%, rgba(243, 236, 222, 0.92) 80%, rgba(225, 212, 192, 0.85) 100%);
+    border-top: 1.5px solid rgba(157, 115, 57, 0.45);
+    box-shadow: -1px 0px 3px rgba(0, 0, 0, 0.08); /* 闭合时产生叠层阴影 */
+    overflow: hidden;
+  }
+
+  /* ★ 全景统构式水墨晕染 ★ 
+     精准计算：扇叶250px，轴心在360px。将径向渐变圆心设在 50% 100%，完美对齐物理轴心！ */
+  .rib-ink-wash {
+    position: absolute;
+    top: 0;
+    left: calc(50% - 150px);
+    width: 300px;
+    height: 360px; /* 延伸至物理轴心 */
+    transform-origin: 50% 100%; /* 圆心对齐物理轴心 */
+    background: radial-gradient(circle at 50% 100%, rgba(20,25,30,0.9) 8%, rgba(60,70,80,0.65) 25%, rgba(130,140,150,0.25) 55%, rgba(255,255,255,0) 80%);
+    filter: url(#inkBleedFilter);
+    opacity: 0;
+    transform: scale(0.1);
+  }
+
+  /* 水墨随扇叶展开，从轴心同频绽放扩散 */
+  .slide.active .rib-ink-wash {
+    opacity: 0.95;
+    transform: scale(1.05);
+    transition: transform 2.5s cubic-bezier(0.16, 1, 0.3, 1) 1.6s, opacity 1.5s ease 1.6s;
+  }
+
+  /* 楠木扇骨 */
+  .rib-bone {
+    position: absolute;
+    bottom: 0;
+    left: calc(50% - 2.5px);
+    width: 5px;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(140, 105, 65, 0.7) 0%, #52391e 100%);
+    border-radius: 2px;
+    box-shadow: -1px 0 3px rgba(0,0,0,0.2);
+  }
+
+  /* 扇体周围环绕的薄烟层 */
+  .fan-mist-contour {
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 660px;
+    height: 180px;
+    background: radial-gradient(ellipse at 50% 50%, rgba(255,255,255,0.48) 0%, rgba(255,255,255,0) 70%);
+    filter: blur(16px);
+    opacity: 0;
+    transition: opacity 2.5s ease 2.5s; /* 扇叶开完后薄雾浮现 */
+    pointer-events: none;
+  }
+  .slide.active .fan-mist-contour { opacity: 1; }
+
+  /* 古铜扇钉与流苏 */
+  .fan-rivet {
+    position: absolute;
+    bottom: -6px;
+    left: -7px;
+    width: 14px;
+    height: 14px;
+    background: radial-gradient(circle, #b8860b 0%, #52391e 100%);
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+    z-index: 5;
+  }
+  .fan-tassel {
+    position: absolute;
+    top: 10px;
+    left: 5px;
+    width: 3px;
+    height: 38px;
+    background: var(--color-cinnabar);
+    transform-origin: top center;
+    animation: tasselSway 4s ease-in-out infinite alternate;
+  }
+  .fan-tassel::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: -3.5px;
+    width: 10px;
+    height: 12px;
+    background: var(--color-cinnabar);
+    border-radius: 2px;
+  }
+  @keyframes tasselSway {
+    0% { transform: rotate(-5deg); }
+    100% { transform: rotate(6deg); }
+  }
+
+  /* ================== 景深分层与背景动效 ================== */
+  .parallax-layer {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none;
+  }
+  .mountain-distant {
+    z-index: 1;
+    position: absolute;
+    bottom: 0; left: 0; width: 100%; height: 190px;
+    opacity: 0.45;
+    animation: distantBreathe 18s ease-in-out infinite alternate;
+  }
+  @keyframes distantBreathe {
+    0% { transform: translateY(0); opacity: 0.35; }
+    100% { transform: translateY(-5px); opacity: 0.48; }
+  }
+  .mountain-mid {
+    z-index: 1;
+    position: absolute;
+    bottom: 0; left: 0; width: 100%; height: 140px;
+    opacity: 0.65;
+    animation: midDrift 12s ease-in-out infinite alternate;
+  }
+  @keyframes midDrift {
+    0% { transform: translateX(0); opacity: 0.55; }
+    100% { transform: translateX(-8px); opacity: 0.7; }
+  }
+  .crane-ambient {
+    position: absolute;
+    top: 36px; right: 54px;
+    width: 68px; height: 48px;
+    opacity: 0.75;
+    z-index: 2;
+    animation: craneSoar 8s ease-in-out infinite alternate;
+  }
+  @keyframes craneSoar {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    100% { transform: translate(-10px, -6px) rotate(1.5deg); }
+  }
+
+  /* ================== 单页与时序进场系统 ================== */
   .slide {
     width: 100%;
     height: 100%;
-    padding: 38px 58px;
+    padding: 44px 62px;
     display: none;
     flex-direction: column;
     justify-content: space-between;
     position: absolute;
     top: 0; left: 0;
-    animation: slideFade 0.35s ease-out;
+    z-index: 4;
   }
-  .slide.active { display: flex; }
-
-  @keyframes slideFade {
-    from { opacity: 0; transform: translateY(8px); }
-    to { opacity: 1; transform: translateY(0); }
+  .slide.active {
+    display: flex;
+    animation: inkSoakEntrance 0.85s cubic-bezier(0.19, 1, 0.22, 1) forwards;
   }
-
-  /* 朱砂印章 */
-  .seal {
-    display: inline-block;
-    border: 1.5px solid var(--cinnabar);
-    color: var(--cinnabar);
-    padding: 2px 6px;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 2px;
-    border-radius: 2px;
-    line-height: 1.2;
-    vertical-align: middle;
+  @keyframes inkSoakEntrance {
+    0% { opacity: 0; filter: blur(6px); transform: scale(0.99); }
+    100% { opacity: 1; filter: blur(0); transform: scale(1); }
   }
 
-  /* 页眉 */
+  @keyframes strokeReveal {
+    0% { opacity: 0; transform: translateY(14px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes sealStampIn {
+    0% { opacity: 0; transform: scale(1.35) rotate(-3deg); filter: blur(1.5px); }
+    65% { opacity: 1; transform: scale(0.98) rotate(0.5deg); filter: blur(0); }
+    100% { opacity: 1; transform: scale(1) rotate(0deg); }
+  }
+
+  /* 封面文字呼应：随折扇完全展开(2.5s)后从容入墨 */
+  .slide.active .cover-content h1 {
+    animation: strokeReveal 0.85s cubic-bezier(0.19, 1, 0.22, 1) both;
+    animation-delay: 2.8s;
+  }
+  .slide.active .cover-content .sub {
+    animation: strokeReveal 0.85s cubic-bezier(0.19, 1, 0.22, 1) both;
+    animation-delay: 3.1s;
+  }
+  .slide.active .cover-content .profile-capsule {
+    animation: strokeReveal 0.85s cubic-bezier(0.19, 1, 0.22, 1) both;
+    animation-delay: 3.4s;
+  }
+  .slide.active .cover-content .badge-row {
+    animation: strokeReveal 0.85s cubic-bezier(0.19, 1, 0.22, 1) both;
+    animation-delay: 3.7s;
+  }
+
+  /* 内页时序阶梯差 */
+  .slide.active .slide-header { animation: strokeReveal 0.7s cubic-bezier(0.19, 1, 0.22, 1) both; animation-delay: 0.1s; }
+  .slide.active .brush-line { stroke-dashoffset: 0; transition: stroke-dashoffset 1.1s cubic-bezier(0.19, 1, 0.22, 1) 0.25s; }
+  .slide.active .seal-tag { animation: sealStampIn 0.6s cubic-bezier(0.19, 1, 0.22, 1) both; animation-delay: 0.2s; }
+  
+  .slide.active .badge-cinnabar:nth-child(1) { animation: sealStampIn 0.65s cubic-bezier(0.19, 1, 0.22, 1) both; animation-delay: 3.8s; }
+  .slide.active .badge-cinnabar:nth-child(2) { animation: sealStampIn 0.65s cubic-bezier(0.19, 1, 0.22, 1) both; animation-delay: 4.1s; }
+  .slide.active .badge-cinnabar:nth-child(3) { animation: sealStampIn 0.65s cubic-bezier(0.19, 1, 0.22, 1) both; animation-delay: 4.4s; }
+
+  .slide.active .ink-card:nth-child(1) { animation: strokeReveal 0.75s cubic-bezier(0.19, 1, 0.22, 1) both; animation-delay: 0.25s; }
+  .slide.active .ink-card:nth-child(2) { animation: strokeReveal 0.75s cubic-bezier(0.19, 1, 0.22, 1) both; animation-delay: 0.38s; }
+  .slide.active .ink-card:nth-child(3) { animation: strokeReveal 0.75s cubic-bezier(0.19, 1, 0.22, 1) both; animation-delay: 0.51s; }
+  .slide.active .ink-card:nth-child(4) { animation: strokeReveal 0.75s cubic-bezier(0.19, 1, 0.22, 1) both; animation-delay: 0.64s; }
+  .slide.active .ink-card:nth-child(5) { animation: strokeReveal 0.75s cubic-bezier(0.19, 1, 0.22, 1) both; animation-delay: 0.77s; }
+  .slide.active .ancient-scroll { animation: strokeReveal 0.8s cubic-bezier(0.19, 1, 0.22, 1) both; animation-delay: 0.35s; }
+  .slide.active .slide-footer { animation: strokeReveal 0.6s ease both; animation-delay: 0.7s; }
+
+  /* ================== 排版与组件 ================== */
   .slide-header {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    border-bottom: 1px solid var(--border-ink);
-    padding-bottom: 10px;
+    padding-bottom: 8px;
+    position: relative;
   }
   .slide-header h2 {
-    font-size: 23px;
-    font-weight: 900;
-    letter-spacing: 1px;
+    font-size: 25px;
+    font-weight: 800;
+    color: var(--ink-burnt);
+    letter-spacing: 3px;
+    margin-top: 4px;
   }
-  .slide-header .chapter {
+  .slide-header .chapter-indicator {
     font-size: 13px;
-    color: var(--ink-light);
-    letter-spacing: 2px;
+    color: var(--color-ochre);
+    letter-spacing: 3.5px;
+    font-weight: 600;
   }
 
-  /* 栅格卡片系统 */
-  .content-grid-3 {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-    margin: 22px 0;
+  .brush-line-wrap { width: 100%; height: 4px; margin-bottom: 8px; }
+  .brush-line { stroke-dasharray: 900; stroke-dashoffset: 900; }
+
+  .seal-tag {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1.5px solid var(--color-cinnabar);
+    color: var(--color-cinnabar);
+    padding: 2px 10px;
+    border-radius: 2px;
+    font-size: 12px;
+    letter-spacing: 2.5px;
+    font-weight: 700;
+    background: var(--color-cinnabar-faint);
   }
-  .content-grid-2 {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-    margin: 24px 0;
+  .seal-tag.blue   { border-color: var(--color-mineral-blue); color: var(--color-mineral-blue); background: var(--color-blue-faint); }
+  .seal-tag.green  { border-color: var(--color-mineral-green); color: var(--color-mineral-green); background: var(--color-green-faint); }
+  .seal-tag.ochre  { border-color: var(--color-ochre); color: var(--color-ochre); background: var(--color-ochre-faint); }
+
+  .badge-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; justify-content: center; }
+  .badge-cinnabar {
+    font-size: 12.5px;
+    padding: 4px 14px;
+    border-radius: 3px;
+    background: #fff;
+    border: 1px solid rgba(148, 50, 44, 0.35);
+    color: var(--color-cinnabar);
+    letter-spacing: 1.5px;
+    font-weight: 700;
+    box-shadow: 0 2px 8px rgba(148, 50, 44, 0.06);
   }
+
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin: 18px 0; }
+  .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin: 18px 0; }
+  .grid-5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; margin: 24px 0; }
 
   .ink-card {
     background: var(--paper-card);
-    border: 1px solid var(--border-ink);
-    padding: 20px 18px;
-    border-radius: 2px;
+    border-radius: 4px;
+    padding: 22px 20px;
+    box-shadow: var(--shadow-ink-diffuse);
+    border: 1px solid var(--border-ink-subtle);
     position: relative;
-    box-shadow: 0 4px 14px rgba(0,0,0,0.02);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1), box-shadow 0.4s ease, background 0.3s ease;
+  }
+  .ink-card:hover {
+    transform: translateY(-3px);
+    background: var(--paper-card-hover);
+    box-shadow: 0 20px 45px rgba(44, 49, 55, 0.08);
+    border-color: rgba(125, 94, 67, 0.28);
   }
   .ink-card::before {
     content: '';
     position: absolute;
-    top: 0; left: 0; width: 3px; height: 100%;
-    background: var(--ink-gray);
+    top: 0; left: 0; width: 100%; height: 2.5px;
+    background: var(--ink-light);
+    border-radius: 4px 4px 0 0;
   }
-  .ink-card.highlight::before { background: var(--cinnabar); }
+  .ink-card.cinnabar-line::before { background: var(--color-cinnabar); }
+  .ink-card.green-line::before    { background: var(--color-mineral-green); }
+  .ink-card.blue-line::before     { background: var(--color-mineral-blue); }
+  .ink-card.ochre-line::before    { background: var(--color-ochre); }
+
   .ink-card h3 {
     font-size: 16px;
+    font-weight: 700;
+    color: var(--ink-burnt);
     margin-bottom: 10px;
-    color: var(--ink-black);
+    letter-spacing: 1.5px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    gap: 7px;
   }
   .ink-card p {
-    font-size: 13px;
-    color: var(--ink-gray);
-    line-height: 1.75;
+    font-size: 13.5px;
+    line-height: 1.8;
+    color: var(--ink-dark);
+    letter-spacing: 0.5px;
   }
 
-  /* 页脚 */
-  .slide-footer {
-    display: flex;
-    justify-content: space-between;
-    font-size: 11px;
-    color: var(--ink-light);
-    border-top: 1px dashed var(--border-ink);
-    padding-top: 10px;
+  .ancient-scroll {
+    background: var(--paper-card);
+    border-radius: 4px;
+    padding: 22px 28px;
+    box-shadow: var(--shadow-ink-diffuse);
+    border-left: 3.5px solid var(--color-cinnabar);
+    border-top: 1px solid var(--border-ink-subtle);
+    border-right: 1px solid var(--border-ink-subtle);
+    border-bottom: 1px solid var(--border-ink-subtle);
+    font-size: 14.5px;
+    color: var(--ink-dark);
+    line-height: 1.9;
+    letter-spacing: 1px;
   }
 
-  /* 封面与鸣谢特殊排版 */
-  .center-layout {
+  .center-box {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
+    text-align: center;
     height: 100%;
-    padding-left: 10px;
+    position: relative;
+    z-index: 5;
   }
-  .center-layout h1 {
-    font-size: 40px;
+  .center-box h1 {
+    font-size: 38px;
     font-weight: 900;
-    letter-spacing: 5px;
+    color: var(--ink-burnt);
+    letter-spacing: 6px;
     margin-bottom: 12px;
   }
-  .center-layout .sub {
-    font-size: 18px;
-    color: var(--ink-gray);
-    letter-spacing: 3px;
-    margin-bottom: 26px;
+  .center-box .sub {
+    font-size: 17px;
+    color: var(--ink-mid);
+    letter-spacing: 3.5px;
+    margin-bottom: 24px;
   }
 
-  /* 翻页控制键 */
+  .slide-footer {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: var(--ink-light);
+    padding-top: 10px;
+    letter-spacing: 1.5px;
+    position: relative;
+    z-index: 6;
+  }
+
   .deck-controls {
     position: absolute;
-    bottom: 14px;
-    right: 22px;
+    bottom: 20px;
+    right: 28px;
     display: flex;
     gap: 8px;
-    z-index: 10;
+    z-index: 25;
   }
-  .ctrl-btn {
-    background: rgba(29,30,32,0.08);
-    border: none;
-    width: 26px;
-    height: 26px;
+  .btn-ctrl {
+    background: rgba(254, 252, 248, 0.9);
+    border: 1px solid var(--border-ink-subtle);
+    width: 32px;
+    height: 32px;
     cursor: pointer;
-    border-radius: 50%;
-    font-size: 13px;
+    border-radius: 3px;
+    font-size: 15px;
+    color: var(--ink-dark);
     display: flex;
     align-items: center;
     justify-content: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+    transition: all 0.25s ease;
   }
-  .ctrl-btn:hover { background: rgba(180,56,50,0.15); color: var(--cinnabar); }
+  .btn-ctrl:hover {
+    background: var(--color-cinnabar);
+    color: #fff;
+    border-color: var(--color-cinnabar);
+  }
 </style>
 </head>
 <body>
 
-<div class="deck-container">
-  <!-- 第 1 页：封面 -->
+<!-- 宣纸水墨天然渗化 SVG 滤镜 -->
+<svg style="position: absolute; width: 0; height: 0;" aria-hidden="true">
+  <filter id="inkBleedFilter">
+    <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="4" result="noise" />
+    <feDisplacementMap in="SourceGraphic" in2="noise" scale="9" xChannelSelector="R" yChannelSelector="G" />
+  </filter>
+</svg>
+
+<div class="deck-container" id="deckContainer">
+  <!-- 顶部运笔墨线进度条 -->
+  <div class="ink-scroll-progress" id="inkProgress"></div>
+
+  <!-- 分层景深：流岚薄雾与远近山色 -->
+  <div class="parallax-layer">
+    <svg class="mountain-distant" viewBox="0 0 1000 190" preserveAspectRatio="none">
+      <path d="M0,190 L0,110 Q140,55 300,105 T620,80 T880,115 T1000,75 L1000,190 Z" fill="#cfc5b4" />
+    </svg>
+    <svg class="mountain-mid" viewBox="0 0 1000 140" preserveAspectRatio="none">
+      <path d="M0,140 L0,95 Q180,60 390,95 T750,75 T1000,90 L1000,140 Z" fill="#b8ab97" />
+    </svg>
+  </div>
+
+  <!-- 浮空祥鹤 -->
+  <svg class="crane-ambient" viewBox="0 0 100 70">
+    <path d="M10,40 Q35,15 65,30 Q85,10 95,5 Q80,25 65,38 Q45,55 20,48 Z" fill="#2d3238" />
+    <path d="M40,28 Q55,8 70,20 Z" fill="#94322c" />
+  </svg>
+
+  <!-- ================= P1: 封面页（折扇“拖拽舒展”物理动画） ================= -->
   <div class="slide active">
-    <div class="center-layout">
-      <div style="margin-bottom: 14px;"><span class="seal">笃行修身</span></div>
-      <h1>格物致知 · 智联未来</h1>
-      <div class="sub">信息与电气工程学院 · 通信俱乐部技术部竞选答辩</div>
-      <div style="font-size: 14px; color: var(--ink-gray); line-height: 2;">
-        竞选人：杨天宇 &nbsp;|&nbsp; 班级：电卓三班 &nbsp;|&nbsp; 政治面貌：共青团员
+    <!-- 折扇水墨物理装置 -->
+    <div class="fan-master-wrapper">
+      <div class="fan-mist-contour"></div>
+      <div class="fan-pivot">
+        <!-- 13档扇叶，全部从左侧收拢态(-75度)被依次拖拽拉开 -->
+        <div class="fan-rib"><div class="rib-paper"><div class="rib-ink-wash"></div></div><div class="rib-bone"></div></div>
+        <div class="fan-rib"><div class="rib-paper"><div class="rib-ink-wash"></div></div><div class="rib-bone"></div></div>
+        <div class="fan-rib"><div class="rib-paper"><div class="rib-ink-wash"></div></div><div class="rib-bone"></div></div>
+        <div class="fan-rib"><div class="rib-paper"><div class="rib-ink-wash"></div></div><div class="rib-bone"></div></div>
+        <div class="fan-rib"><div class="rib-paper"><div class="rib-ink-wash"></div></div><div class="rib-bone"></div></div>
+        <div class="fan-rib"><div class="rib-paper"><div class="rib-ink-wash"></div></div><div class="rib-bone"></div></div>
+        <div class="fan-rib"><div class="rib-paper"><div class="rib-ink-wash"></div></div><div class="rib-bone"></div></div>
+        <div class="fan-rib"><div class="rib-paper"><div class="rib-ink-wash"></div></div><div class="rib-bone"></div></div>
+        <div class="fan-rib"><div class="rib-paper"><div class="rib-ink-wash"></div></div><div class="rib-bone"></div></div>
+        <div class="fan-rib"><div class="rib-paper"><div class="rib-ink-wash"></div></div><div class="rib-bone"></div></div>
+        <div class="fan-rib"><div class="rib-paper"><div class="rib-ink-wash"></div></div><div class="rib-bone"></div></div>
+        <div class="fan-rib"><div class="rib-paper"><div class="rib-ink-wash"></div></div><div class="rib-bone"></div></div>
+        <div class="fan-rib"><div class="rib-paper"><div class="rib-ink-wash"></div></div><div class="rib-bone"></div></div>
+        
+        <!-- 轴心赤铜扇钉与流苏 -->
+        <div class="fan-rivet"></div>
+        <div class="fan-tassel"></div>
+      </div>
+    </div>
+
+    <!-- 扇上墨宝与答辩人信息（待展平后显露） -->
+    <div class="center-box cover-content">
+      <div style="margin-bottom: 14px;">
+        <span class="seal-tag">志存高远 · 笃行致远</span>
+      </div>
+      <h1>智周万物 · 研墨笃行</h1>
+      <div class="sub">通信俱乐部技术部 · 竞选答辩[cite: 1]</div>
+
+      <div class="profile-capsule" style="background: rgba(255,255,255,0.85); padding: 9px 28px; border-radius: 3px; font-size: 14.5px; color: var(--ink-dark); border: 1px solid var(--border-ink-subtle); letter-spacing: 1.5px; margin-bottom: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.03);">
+        竞选人：罗懿璇 &nbsp;|&nbsp; 班级：人工智能二班[cite: 1] &nbsp;|&nbsp; 政治面貌：共青团员[cite: 1]
+      </div>
+
+      <!-- 核心称号印章 -->
+      <div class="badge-row">
+        <span class="badge-cinnabar">🏅 人工智能初级训练师</span>
+        <span class="badge-cinnabar">🎖️ 人工智能高级训练师</span>
+        <span class="badge-cinnabar" style="border-color: rgba(61,82,69,0.4); color: var(--color-mineral-green);">🎨 美育视觉设计特长[cite: 1]</span>
       </div>
     </div>
     <div class="slide-footer">
-      <span>通信俱乐部技术部竞选答辩</span>
-      <span>01 / 11</span>
+      <span>通信俱乐部技术部 · 竞选答辩[cite: 1]</span>
+      <span>卷一 · 扉页</span>
     </div>
   </div>
 
-  <!-- 第 2 页：目录 -->
+  <!-- ================= P2: 目录页 ================= -->
   <div class="slide">
-    <div class="slide-header">
-      <h2>目次 · 卷轴</h2>
-      <div class="chapter">纲目导引</div>
+    <div>
+      <div class="slide-header">
+        <div>
+          <span class="seal-tag blue">纲目概览</span>
+          <h2>陈辞章则 · 汇报纲要</h2>
+        </div>
+        <div class="chapter-indicator">CONTENTS</div>
+      </div>
+      <div class="brush-line-wrap">
+        <svg width="100%" height="4"><line x1="0" y1="2" x2="880" y2="2" stroke="rgba(125,94,67,0.25)" stroke-width="1.5" class="brush-line" /></svg>
+      </div>
     </div>
-    <div class="content-grid-3" style="grid-template-columns: repeat(5, 1fr); gap: 10px;">
-      <div class="ink-card highlight"><h3>壹 · 初识</h3><p>个人履历与求真品格</p></div>
-      <div class="ink-card"><h3>贰 · 技长</h3><p>敏学善思与务实专长</p></div>
-      <div class="ink-card"><h3>叁 · 沟壑</h3><p>部门认知与协作意识</p></div>
-      <div class="ink-card highlight"><h3>肆 · 展示</h3><p>极客特色与才艺分享</p></div>
-      <div class="ink-card"><h3>伍 · 笃行</h3><p>未来蓝图与履职承诺</p></div>
+    <div class="grid-5">
+      <div class="ink-card blue-line">
+        <h3>壹 · 初识</h3>
+        <p>个人档案<br>素养特质[cite: 1]</p>
+      </div>
+      <div class="ink-card cinnabar-line">
+        <h3>贰 · 研学</h3>
+        <p>双级训练师资质<br>专业底蕴[cite: 1]</p>
+      </div>
+      <div class="ink-card ochre-line">
+        <h3>叁 · 丹青</h3>
+        <p>美育创作<br>视觉赋能[cite: 1]</p>
+      </div>
+      <div class="ink-card green-line">
+        <h3>肆 · 澄怀</h3>
+        <p>部门认知<br>初心所向[cite: 1]</p>
+      </div>
+      <div class="ink-card blue-line">
+        <h3>伍 · 笃志</h3>
+        <p>履职构想<br>三步宏图[cite: 1]</p>
+      </div>
     </div>
     <div class="slide-footer">
-      <span>通信俱乐部技术部竞选答辩</span>
+      <span>通信俱乐部技术部 · 竞选答辩[cite: 1]</span>
       <span>02 / 11</span>
     </div>
   </div>
 
-  <!-- 第 3 页：初识其人 -->
+  <!-- ================= P3: 初识其人 ================= -->
   <div class="slide">
-    <div class="slide-header">
-      <h2>初识其人 · 严谨笃志</h2>
-      <div class="chapter">壹 · 个人履历</div>
+    <div>
+      <div class="slide-header">
+        <div>
+          <span class="seal-tag">卷一 · 初识</span>
+          <h2>修身笃行 · 个人档案</h2>
+        </div>
+        <div class="chapter-indicator">基本情况</div>
+      </div>
+      <div class="brush-line-wrap">
+        <svg width="100%" height="4"><line x1="0" y1="2" x2="880" y2="2" stroke="rgba(148,50,44,0.25)" stroke-width="1.5" class="brush-line" /></svg>
+      </div>
     </div>
-    <div class="content-grid-3">
-      <div class="ink-card highlight">
-        <h3>基本底色 <span class="seal">身份</span></h3>
-        <p>来自电卓三班，共青团员。恪守求真品性，立足工科本色，具备良好的政治素养与大局观。</p>
+    <div class="grid-3">
+      <div class="ink-card cinnabar-line">
+        <h3>基本身份 · 根基扎实 🔖</h3>
+        <p>来自人工智能二班，共青团员[cite: 1]；已取得<strong>人工智能初级、高级训练师</strong>双重专业资质认证，恪守学术本分，心向工程技术前沿[cite: 1]。</p>
       </div>
-      <div class="ink-card">
-        <h3>素养志趣 <span class="seal">博览</span></h3>
-        <p>手不释卷，热爱前沿阅读。尤其专注于人工智能技术与电子通信知识的学习沉淀，保持自驱成长。</p>
+      <div class="ink-card green-line">
+        <h3>性格品行 · 温润谦和 🍃</h3>
+        <p>性格开朗，善于沟通倾听与协同配合[cite: 1]。兼具同理心与进取心，善在集体团队中凝聚伙伴力量[cite: 1]。</p>
       </div>
-      <div class="ink-card">
-        <h3>处事作风 <span class="seal">务实</span></h3>
-        <p>做事严谨有条理，善于归纳总结。对待各项事务细致负责，讲求高效落地与闭环反馈。</p>
+      <div class="ink-card ochre-line">
+        <h3>做事操守 · 审慎笃实 ⚖️</h3>
+        <p>行事稳健细致，执行力强[cite: 1]。秉持求真求实之风，凡经手任务必有始有终、谦逊求教[cite: 1]。</p>
       </div>
     </div>
     <div class="slide-footer">
-      <span>通信俱乐部技术部竞选答辩</span>
+      <span>通信俱乐部技术部 · 竞选答辩[cite: 1]</span>
       <span>03 / 11</span>
     </div>
   </div>
 
-  <!-- 第 4 页：核心优势 1 -->
+  <!-- ================= P4: 核心优势 1 ================= -->
   <div class="slide">
-    <div class="slide-header">
-      <h2>技长于心 · 敏学致知</h2>
-      <div class="chapter">贰 · 核心优势（一）</div>
-    </div>
-    <div class="content-grid-2">
-      <div class="ink-card highlight">
-        <h3>对通信与电子技术的自驱热爱</h3>
-        <p>对硬件电路、通信原理抱有浓厚兴趣，能够主动追踪行业技术动态，享受探索未知的乐趣。</p>
+    <div>
+      <div class="slide-header">
+        <div>
+          <span class="seal-tag blue">卷二 · 研思</span>
+          <h2>研学精进 · 算力与格物</h2>
+        </div>
+        <div class="chapter-indicator">优势（一）</div>
       </div>
-      <div class="ink-card">
-        <h3>快速吸收与知识迁移能力</h3>
-        <p>面对复杂陌生的专业新知与开发工具，善于查阅官方文档与技术指南，短时间内建立知识骨架并上手实践。</p>
+      <div class="brush-line-wrap">
+        <svg width="100%" height="4"><line x1="0" y1="2" x2="880" y2="2" stroke="rgba(54,72,83,0.25)" stroke-width="1.5" class="brush-line" /></svg>
+      </div>
+    </div>
+    <div class="grid-2">
+      <div class="ink-card cinnabar-line">
+        <h3>持证专攻：人工智能双级训练师 🧠</h3>
+        <p>荣获<strong>人工智能初级训练师</strong>及<strong>人工智能高级训练师</strong>认证，具备扎实的数据标注清洗、模型调优与工程规范经验，算法思维清晰，具备快速攻坚专业问题的钻研习惯[cite: 1]。</p>
+      </div>
+      <div class="ink-card blue-line">
+        <h3>钻研通信与软硬件前沿 📡</h3>
+        <p>对现代通信科创保持高度探索热情，沉心梳理软硬件知识脉络，将AI训练师的工程化思维深度融入通信软硬件应用之中[cite: 1]。</p>
       </div>
     </div>
     <div class="slide-footer">
-      <span>通信俱乐部技术部竞选答辩</span>
+      <span>通信俱乐部技术部 · 竞选答辩[cite: 1]</span>
       <span>04 / 11</span>
     </div>
   </div>
 
-  <!-- 第 5 页：核心优势 2 -->
+  <!-- ================= P5: 核心优势 2 ================= -->
   <div class="slide">
-    <div class="slide-header">
-      <h2>技长于心 · 严谨务实</h2>
-      <div class="chapter">贰 · 核心优势（二）</div>
+    <div>
+      <div class="slide-header">
+        <div>
+          <span class="seal-tag ochre">卷三 · 丹青</span>
+          <h2>美育特长 · 视觉赋能</h2>
+        </div>
+        <div class="chapter-indicator">优势（二）</div>
+      </div>
+      <div class="brush-line-wrap">
+        <svg width="100%" height="4"><line x1="0" y1="2" x2="880" y2="2" stroke="rgba(125,94,67,0.25)" stroke-width="1.5" class="brush-line" /></svg>
+      </div>
     </div>
-    <div class="content-grid-3">
-      <div class="ink-card">
-        <h3>文档资料严谨归纳</h3>
-        <p>擅长文字梳理与材料汇总，对格式排版与数据严谨度要求严苛，杜绝马虎与疏漏。</p>
+    <div class="grid-2">
+      <div class="ink-card ochre-line">
+        <h3>擅长手绘与视觉设计 🖌️</h3>
+        <p>具备优秀的手绘功底与审美把控力，能独立输出高质量宣传海报、文创手绘与多媒体视觉素材[cite: 1]。</p>
       </div>
-      <div class="ink-card highlight">
-        <h3>办公软件踏实功底</h3>
-        <p>熟练运用 Word、Excel 等办公工具完成日常信息整理与表格制作，保障部门日常事务条理分明。</p>
-      </div>
-      <div class="ink-card">
-        <h3>闭环执行力</h3>
-        <p>遇到复杂繁杂的任务不拖延，坚持事事有回音、件件有着落，能经受住繁琐后勤工作的检验。</p>
+      <div class="ink-card green-line">
+        <h3>赋能硬核科技成果展示 📑</h3>
+        <p>深谙“理工与美育兼融”之道，善于梳理技术要点，将其转化为典雅生动的图文展板与汇报演示，提升科创团队形象[cite: 1]。</p>
       </div>
     </div>
     <div class="slide-footer">
-      <span>通信俱乐部技术部竞选答辩</span>
+      <span>通信俱乐部技术部 · 竞选答辩[cite: 1]</span>
       <span>05 / 11</span>
     </div>
   </div>
 
-  <!-- 第 6 页：核心优势 3 -->
+  <!-- ================= P6: 核心优势 3 ================= -->
   <div class="slide">
-    <div class="slide-header">
-      <h2>技长于心 · 和衷共济</h2>
-      <div class="chapter">贰 · 核心优势（三）</div>
-    </div>
-    <div class="content-grid-2">
-      <div class="ink-card">
-        <h3>温和耐心的沟通心态</h3>
-        <p>善于倾听同伴见解，在讨论与任务协同中不固执己见，注重以解决问题为导向凝聚共识。</p>
+    <div>
+      <div class="slide-header">
+        <div>
+          <span class="seal-tag green">卷二 · 作风</span>
+          <h2>敏求协力 · 沉潜任事</h2>
+        </div>
+        <div class="chapter-indicator">优势（三）</div>
       </div>
-      <div class="ink-card highlight">
-        <h3>主动思考与破局担当</h3>
-        <p>团队遇阻时主动思考解决方案，服从组织调配，甘做幕后基石，具备高度的集体协作意识。</p>
+      <div class="brush-line-wrap">
+        <svg width="100%" height="4"><line x1="0" y1="2" x2="880" y2="2" stroke="rgba(61,82,69,0.25)" stroke-width="1.5" class="brush-line" /></svg>
+      </div>
+    </div>
+    <div class="grid-3">
+      <div class="ink-card green-line">
+        <h3>温润沟通 💬</h3>
+        <p>推己及人，善于倾听多元建议；面对分歧包容理性，以坦诚态度推动团队高效协同[cite: 1]。</p>
+      </div>
+      <div class="ink-card cinnabar-line">
+        <h3>韧性担当 📜</h3>
+        <p>对待任务脚踏实地，从繁杂文档整理到现场后勤保障，不畏琐碎，力求严谨周密[cite: 1]。</p>
+      </div>
+      <div class="ink-card blue-line">
+        <h3>高效协作 🤝</h3>
+        <p>紧密配合部门师兄师姐与同侪伙伴，发挥严密工程逻辑与美育优势，主动补位分担[cite: 1]。</p>
       </div>
     </div>
     <div class="slide-footer">
-      <span>通信俱乐部技术部竞选答辩</span>
+      <span>通信俱乐部技术部 · 竞选答辩[cite: 1]</span>
       <span>06 / 11</span>
     </div>
   </div>
 
-  <!-- 第 7 页：部门认知 -->
+  <!-- ================= P7: 部门认知 ================= -->
   <div class="slide">
-    <div class="slide-header">
-      <h2>胸中沟壑 · 明晰定位</h2>
-      <div class="chapter">叁 · 部门认知</div>
+    <div>
+      <div class="slide-header">
+        <div>
+          <span class="seal-tag blue">卷四 · 澄怀</span>
+          <h2>心之所向 · 认识技术部[cite: 1]</h2>
+        </div>
+        <div class="chapter-indicator">部门认知</div>
+      </div>
+      <div class="brush-line-wrap">
+        <svg width="100%" height="4"><line x1="0" y1="2" x2="880" y2="2" stroke="rgba(54,72,83,0.25)" stroke-width="1.5" class="brush-line" /></svg>
+      </div>
     </div>
-    <div class="content-grid-3">
-      <div class="ink-card">
-        <h3>技术交流高地</h3>
-        <p>技术部是连接理论与实践的桥梁，为同学们提供切磋硬件设计与通信算法的优质场域。</p>
+    <div class="grid-3">
+      <div class="ink-card blue-line">
+        <h3>专业探求之黉宇 📚</h3>
+        <p>是学院学子交流通信知识、切磋软硬件技术、碰撞灵感火花的专业学术阵地[cite: 1]。</p>
       </div>
-      <div class="ink-card highlight">
-        <h3>科创竞赛摇篮</h3>
-        <p>这里不仅是常规活动的承载者，更是学院筹备学科竞赛、培育优秀工程队伍的实战阵地。</p>
+      <div class="ink-card cinnabar-line">
+        <h3>科创竞赛之熔炉 🏆</h3>
+        <p>是组队打磨项目、攻坚学科竞赛、促进理论转化为实操成果的核心孵化平台[cite: 1]。</p>
       </div>
-      <div class="ink-card">
-        <h3>传承共享智库</h3>
-        <p>沉淀经验讲义与项目档案，让技术有火种、经验有共享，助力俱乐部伙伴同频共进。</p>
+      <div class="ink-card green-line">
+        <h3>同舟共济之归所 🌱</h3>
+        <p>是结交志同道合师友、在互帮互助中相互砥砺、共同拓宽工程视野的温暖集体[cite: 1]。</p>
       </div>
     </div>
     <div class="slide-footer">
-      <span>通信俱乐部技术部竞选答辩</span>
+      <span>通信俱乐部技术部 · 竞选答辩[cite: 1]</span>
       <span>07 / 11</span>
     </div>
   </div>
 
-  <!-- 第 8 页：才艺展示 -->
+  <!-- ================= P8: 才艺展示 ================= -->
   <div class="slide">
-    <div class="slide-header">
-      <h2>别开生面 · 极客展示</h2>
-      <div class="chapter">肆 · 现场才艺表演</div>
-    </div>
-    <div class="content-grid-2">
-      <div class="ink-card highlight">
-        <h3>现场演示：AI 效率工程极速秀</h3>
-        <p>以钻研 AI 的日常为依托，现场分享如何用特定结构化 Prompt 在 60 秒内拆解复杂通信原理并形成思维图谱。</p>
+    <div>
+      <div class="slide-header">
+        <div>
+          <span class="seal-tag ochre">卷三 · 展艺</span>
+          <h2>别开生面 · 笔墨才艺秀</h2>
+        </div>
+        <div class="chapter-indicator">才艺展示</div>
       </div>
-      <div class="ink-card">
-        <h3>才艺内核与技术初心</h3>
-        <p>展现对智能工具的熟练驾驭能力，将严谨的技术探索化为现场表达艺术，契合技术部极客底色。</p>
+      <div class="brush-line-wrap">
+        <svg width="100%" height="4"><line x1="0" y1="2" x2="880" y2="2" stroke="rgba(125,94,67,0.25)" stroke-width="1.5" class="brush-line" /></svg>
+      </div>
+    </div>
+    <div class="grid-2">
+      <div class="ink-card cinnabar-line">
+        <h3>灵动笔触：现场手绘速写 🎨</h3>
+        <p>现场展示 1 分钟笔墨速写：为通信俱乐部即席勾勒兼具科技感与国风意境的“科技灵眸/通信飞鸿”概念图，展现原创美术底蕴[cite: 1]。</p>
+      </div>
+      <div class="ink-card ochre-line">
+        <h3>理性算法与水墨美学的融合 💡</h3>
+        <p>印证AI训练师不仅通晓算法逻辑架构，更兼备温润审美情怀，为技术部宣发注入独特文化魅力[cite: 1]！</p>
       </div>
     </div>
     <div class="slide-footer">
-      <span>通信俱乐部技术部竞选答辩</span>
+      <span>通信俱乐部技术部 · 竞选答辩[cite: 1]</span>
       <span>08 / 11</span>
     </div>
   </div>
 
-  <!-- 第 9 页：未来规划 -->
+  <!-- ================= P9: 未来规划 ================= -->
   <div class="slide">
-    <div class="slide-header">
-      <h2>笃行致远 · 履职三阶</h2>
-      <div class="chapter">伍 · 未来规划</div>
+    <div>
+      <div class="slide-header">
+        <div>
+          <span class="seal-tag green">卷五 · 宏图</span>
+          <h2>笃志致远 · 履职三步走</h2>
+        </div>
+        <div class="chapter-indicator">工作构想</div>
+      </div>
+      <div class="brush-line-wrap">
+        <svg width="100%" height="4"><line x1="0" y1="2" x2="880" y2="2" stroke="rgba(61,82,69,0.25)" stroke-width="1.5" class="brush-line" /></svg>
+      </div>
     </div>
-    <div class="content-grid-3">
-      <div class="ink-card">
-        <h3>筑基 · 严谨尽责</h3>
-        <p>做好第一责任人，严谨落实日常资料归集、会议筹备与部门文档整理，打牢后勤基础。</p>
+    <div class="grid-3">
+      <div class="ink-card green-line">
+        <h3>壹 · 筑基蓄力 🌿</h3>
+        <p>勤恳履行基础职责，协助部门日常运营，虚怀若谷向师兄师姐求教专业经验[cite: 1]。</p>
       </div>
-      <div class="ink-card highlight">
-        <h3>研深 · 赛创攻坚</h3>
-        <p>紧跟部门节奏，积极参与各项通信技术研讨与科创竞赛筹备，力争在实践项目中打磨实战本领。</p>
+      <div class="ink-card cinnabar-line">
+        <h3>贰 · 智研共进 ⚙️</h3>
+        <p>依托人工智能高级训练师专长，主导或积极参与通信与AI融合项目，助力团队科创备赛[cite: 1]。</p>
       </div>
-      <div class="ink-card">
-        <h3>传薪 · 经验分享</h3>
-        <p>主动协助举办技术沙龙，分享 AI 效率工具与软件操作心得，为俱乐部整体建设发光发热。</p>
+      <div class="ink-card ochre-line">
+        <h3>叁 · 丹青赋彩 🖌️</h3>
+        <p>统筹把关技术部视觉宣发物料，打造富有美学品质与辨识度的技术团队名片[cite: 1]。</p>
       </div>
     </div>
     <div class="slide-footer">
-      <span>通信俱乐部技术部竞选答辩</span>
+      <span>通信俱乐部技术部 · 竞选答辩[cite: 1]</span>
       <span>09 / 11</span>
     </div>
   </div>
 
-  <!-- 第 10 页：工作态度 -->
+  <!-- ================= P10: 态度承诺 ================= -->
   <div class="slide">
-    <div class="slide-header">
-      <h2>立心明志 · 允诺于行</h2>
-      <div class="chapter">伍 · 工作承诺</div>
-    </div>
-    <div class="content-grid-2">
-      <div class="ink-card highlight">
-        <h3>服从大局统筹 <span class="seal">立信</span></h3>
-        <p>坚决服从学院与通信俱乐部的整体调度，无论身处哪个细分岗位，皆全心全意投入。</p>
+    <div>
+      <div class="slide-header">
+        <div>
+          <span class="seal-tag">卷五 · 明志</span>
+          <h2>赤忱明志 · 恪尽职守</h2>
+        </div>
+        <div class="chapter-indicator">履职决心</div>
       </div>
-      <div class="ink-card">
-        <h3>行稳致远不负托付</h3>
-        <p>以踏实作风抵御浮躁，用严谨态度对抗琐碎。坚持求真务实，为通信俱乐部的稳健运转贡献新生活力。</p>
+      <div class="brush-line-wrap">
+        <svg width="100%" height="4"><line x1="0" y1="2" x2="880" y2="2" stroke="rgba(148,50,44,0.25)" stroke-width="1.5" class="brush-line" /></svg>
+      </div>
+    </div>
+    <div class="center-box" style="margin-top: 10px;">
+      <div class="ancient-scroll" style="max-width: 720px; text-align: left; margin-bottom: 24px;">
+        📜 <strong>坚决服从组织调配</strong>：若有幸入选通信俱乐部技术部，我坚决服从组织的统一调配与统筹安排[cite: 1]；无论身处何种岗位，必将以严谨求实的态度、饱满向上的热情，与大家并肩研精毕智、踏实履责[cite: 1]！
+      </div>
+      <div style="font-size: 14.5px; color: var(--ink-mid); letter-spacing: 2.5px;">
+        格物致知 · 敦品励学 · 知行合一 · 不负重托[cite: 1]
       </div>
     </div>
     <div class="slide-footer">
-      <span>通信俱乐部技术部竞选答辩</span>
+      <span>通信俱乐部技术部 · 竞选答辩[cite: 1]</span>
       <span>10 / 11</span>
     </div>
   </div>
 
-  <!-- 第 11 页：结语鸣谢 -->
+  <!-- ================= P11: 结尾鸣谢 ================= -->
   <div class="slide">
-    <div class="center-layout">
-      <div style="margin-bottom: 14px;"><span class="seal">鸣谢致礼</span></div>
-      <h1>青衿之志 · 履践致远</h1>
-      <div class="sub">诚挚感谢各位评委学长学姐的聆听与指导！</div>
-      <div style="font-size: 14px; color: var(--ink-gray); line-height: 2;">
-        答辩人：杨天宇 &nbsp;|&nbsp; 电卓三班 &nbsp;|&nbsp; 敬呈
+    <div class="center-box">
+      <div style="margin-bottom: 16px;">
+        <span class="seal-tag" style="font-size: 14px; padding: 4px 16px;">结卷 · 敬呈</span>
+      </div>
+      <h1>感谢聆听 · 敬祈教益</h1>
+      <div class="sub">谨以此心，共赴通信技术新程</div>
+      <div style="font-size: 15px; color: var(--ink-dark); letter-spacing: 2px; line-height: 1.9;">
+        答辩人：罗懿璇 &nbsp;｜&nbsp; 人工智能二班[cite: 1]<br>
+        <span style="font-size: 13px; color: var(--color-cinnabar); font-weight: 700;">人工智能初级训练师 · 人工智能高级训练师</span>
       </div>
     </div>
     <div class="slide-footer">
-      <span>通信俱乐部技术部竞选答辩</span>
+      <span>通信俱乐部技术部 · 竞选答辩[cite: 1]</span>
       <span>11 / 11</span>
     </div>
   </div>
 
-  <!-- 控制翻页 -->
+  <!-- 控制微台 -->
   <div class="deck-controls">
-    <button class="ctrl-btn" onclick="prevSlide()">‹</button>
-    <button class="ctrl-btn" onclick="nextSlide()">›</button>
+    <button class="btn-ctrl" onclick="prevSlide()" title="上一页 (←)">‹</button>
+    <button class="btn-ctrl" onclick="nextSlide()" title="下一页 (→/空格)">›</button>
+    <button class="btn-ctrl" onclick="toggleFullScreen()" title="全屏放映 (F)">⛶</button>
   </div>
 </div>
 
 <script>
   let currentSlide = 0;
   const slides = document.querySelectorAll('.slide');
+  const inkProgress = document.getElementById('inkProgress');
+
+  function updateProgress() {
+    const percent = ((currentSlide + 1) / slides.length) * 100;
+    inkProgress.style.width = percent + '%';
+  }
 
   function showSlide(index) {
     slides[currentSlide].classList.remove('active');
     currentSlide = (index + slides.length) % slides.length;
     slides[currentSlide].classList.add('active');
+    updateProgress();
   }
 
   function nextSlide() { showSlide(currentSlide + 1); }
   function prevSlide() { showSlide(currentSlide - 1); }
 
+  function toggleFullScreen() {
+    const deck = document.getElementById('deckContainer');
+    if (!document.fullscreenElement) {
+      if (deck.requestFullscreen) deck.requestFullscreen();
+    } else {
+      if (document.exitFullscreen) document.exitFullscreen();
+    }
+  }
+
+  // 键盘快捷响应（空格、回车、方向键、F全屏）
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowRight' || e.key === ' ') nextSlide();
-    if (e.key === 'ArrowLeft') prevSlide();
+    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'Enter') {
+      e.preventDefault();
+      nextSlide();
+    }
+    if (e.key === 'ArrowLeft') {
+      e.preventDefault();
+      prevSlide();
+    }
+    if (e.key.toLowerCase() === 'f') {
+      toggleFullScreen();
+    }
   });
+
+  // 初始化进度
+  updateProgress();
 </script>
 </body>
 </html>
