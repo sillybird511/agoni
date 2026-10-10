@@ -3,28 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>罗懿璇 - 通信俱乐部技术部竞选答辩 (萌趣动物与卡通伙伴版)</title>
+<title>杨天宇 - 通信俱乐部技术部竞选答辩 (11页水墨版)</title>
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;900&display=swap');
+
   :root {
-    --bg-main: #f2f7fb;
-    --card-white: #ffffff;
-    --macaron-blue: #d8ecf8;
-    --macaron-pink: #ffdce2;
-    --macaron-yellow: #fef0c7;
-    --macaron-green: #d4f4e2;
-    --text-dark: #374151;
-    --text-gray: #64748b;
-    --border-light: rgba(148, 163, 184, 0.2);
-    --shadow-soft: 0 10px 28px rgba(186, 203, 219, 0.24);
-    --radius-box: 20px;
-    --radius-pill: 50px;
+    --paper-bg: #f6f3eb;
+    --paper-card: rgba(255, 255, 255, 0.78);
+    --ink-black: #1d1e20;
+    --ink-gray: #4a5158;
+    --ink-light: #889098;
+    --cinnabar: #b43832;
+    --border-ink: rgba(29, 30, 32, 0.12);
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
-    background-color: #2b303c;
-    font-family: -apple-system, BlinkMacSystemFont, "Quicksand", "Nunito", "PingFang SC", "Microsoft YaHei UI", sans-serif;
-    color: var(--text-dark);
+    background-color: #242526;
+    font-family: 'Noto Serif SC', 'Songti SC', 'Source Han Serif SC', serif;
+    color: var(--ink-black);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -32,187 +29,152 @@
     overflow: hidden;
   }
 
-  /* 幻灯片主画框 */
   .deck-container {
     width: 980px;
-    height: 550px;
-    background: linear-gradient(135deg, #f3f8fc 0%, #fffdfa 100%);
-    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.35);
-    border-radius: 28px;
+    height: 560px;
+    background: var(--paper-bg);
+    box-shadow: 0 24px 60px rgba(0,0,0,0.55);
+    border-radius: 4px;
     position: relative;
     overflow: hidden;
-    border: 3px solid rgba(255, 255, 255, 0.85);
   }
 
-  /* 悬浮背景装饰与可爱挂件 */
-  .bg-decor {
+  /* 水墨烟岚与宣纸肌理微光 */
+  .deck-container::before {
+    content: '';
     position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 85% 15%, rgba(180, 56, 50, 0.05) 0%, transparent 45%),
+                radial-gradient(circle at 10% 90%, rgba(29, 30, 32, 0.09) 0%, transparent 60%);
     pointer-events: none;
-    z-index: 1;
   }
-  .cloud {
-    background: #ffffff;
-    border-radius: 20px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.03);
-    opacity: 0.8;
-  }
-  .star { font-size: 18px; color: #fed053; opacity: 0.85; }
-
-  /* 纯矢量可爱吉祥物定位类 */
-  .mascot {
-    position: absolute;
-    pointer-events: none;
-    z-index: 2;
-    transition: transform 0.3s ease;
-  }
-  .mascot:hover { transform: scale(1.05); }
 
   .slide {
     width: 100%;
     height: 100%;
-    padding: 36px 52px;
+    padding: 38px 58px;
     display: none;
     flex-direction: column;
     justify-content: space-between;
     position: absolute;
     top: 0; left: 0;
-    z-index: 3;
-    animation: gentleFade 0.35s ease-out;
+    animation: slideFade 0.35s ease-out;
   }
   .slide.active { display: flex; }
 
-  @keyframes gentleFade {
-    from { opacity: 0; transform: translateY(6px); }
+  @keyframes slideFade {
+    from { opacity: 0; transform: translateY(8px); }
     to { opacity: 1; transform: translateY(0); }
   }
 
-  /* 顶部导航头 */
+  /* 朱砂印章 */
+  .seal {
+    display: inline-block;
+    border: 1.5px solid var(--cinnabar);
+    color: var(--cinnabar);
+    padding: 2px 6px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    border-radius: 2px;
+    line-height: 1.2;
+    vertical-align: middle;
+  }
+
+  /* 页眉 */
   .slide-header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    padding-bottom: 8px;
-  }
-  .header-tag {
-    background: var(--macaron-blue);
-    color: #2b6cb0;
-    font-size: 11px;
-    font-weight: 700;
-    padding: 4px 12px;
-    border-radius: var(--radius-pill);
-    letter-spacing: 1px;
-    display: inline-block;
+    align-items: flex-end;
+    border-bottom: 1px solid var(--border-ink);
+    padding-bottom: 10px;
   }
   .slide-header h2 {
     font-size: 23px;
-    font-weight: 800;
-    color: var(--text-dark);
-    margin-top: 4px;
+    font-weight: 900;
+    letter-spacing: 1px;
   }
-  .slide-header .chapter-indicator {
+  .slide-header .chapter {
     font-size: 13px;
-    color: var(--text-gray);
-    font-weight: 600;
+    color: var(--ink-light);
+    letter-spacing: 2px;
   }
 
-  /* 栅格系统 */
-  .grid-3 {
+  /* 栅格卡片系统 */
+  .content-grid-3 {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 16px;
-    margin: 16px 0;
+    margin: 22px 0;
   }
-  .grid-2 {
+  .content-grid-2 {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 18px;
-    margin: 16px 0;
+    gap: 20px;
+    margin: 24px 0;
   }
-  .cute-card {
-    background: var(--card-white);
-    border-radius: var(--radius-box);
+
+  .ink-card {
+    background: var(--paper-card);
+    border: 1px solid var(--border-ink);
     padding: 20px 18px;
-    box-shadow: var(--shadow-soft);
-    border: 1.5px solid var(--border-light);
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-  }
-  .cute-card.pink-accent { border-top: 5px solid var(--macaron-pink); }
-  .cute-card.blue-accent { border-top: 5px solid #90cdf4; }
-  .cute-card.yellow-accent { border-top: 5px solid #fbd38d; }
-  .cute-card.green-accent { border-top: 5px solid #9ae6b4; }
-
-  .cute-card h3 {
-    font-size: 15px;
-    font-weight: 700;
-    margin-bottom: 8px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-  .cute-card p {
-    font-size: 13px;
-    line-height: 1.7;
-    color: var(--text-gray);
-  }
-
-  /* 气泡对话框 */
-  .bubble-box {
-    background: #ffffff;
-    border-radius: 20px;
-    padding: 16px 22px;
-    box-shadow: var(--shadow-soft);
+    border-radius: 2px;
     position: relative;
-    border: 1.5px solid var(--macaron-pink);
-    font-size: 13.5px;
-    color: var(--text-gray);
-    line-height: 1.65;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.02);
   }
-  .bubble-box::after {
+  .ink-card::before {
     content: '';
     position: absolute;
-    bottom: -8px;
-    left: 36px;
-    width: 14px;
-    height: 14px;
-    background: #fff;
-    border-right: 1.5px solid var(--macaron-pink);
-    border-bottom: 1.5px solid var(--macaron-pink);
-    transform: rotate(45deg);
+    top: 0; left: 0; width: 3px; height: 100%;
+    background: var(--ink-gray);
   }
-
-  /* 居中排版 */
-  .center-box {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    height: 100%;
-  }
-  .center-box h1 {
-    font-size: 38px;
-    font-weight: 800;
-    color: var(--text-dark);
-    margin-bottom: 12px;
-  }
-  .center-box .sub {
+  .ink-card.highlight::before { background: var(--cinnabar); }
+  .ink-card h3 {
     font-size: 16px;
-    color: var(--text-gray);
-    margin-bottom: 24px;
+    margin-bottom: 10px;
+    color: var(--ink-black);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .ink-card p {
+    font-size: 13px;
+    color: var(--ink-gray);
+    line-height: 1.75;
   }
 
   /* 页脚 */
   .slide-footer {
     display: flex;
     justify-content: space-between;
-    font-size: 12px;
-    color: #94a3b8;
-    padding-top: 8px;
+    font-size: 11px;
+    color: var(--ink-light);
+    border-top: 1px dashed var(--border-ink);
+    padding-top: 10px;
   }
 
-  /* 翻页按钮 */
+  /* 封面与鸣谢特殊排版 */
+  .center-layout {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    padding-left: 10px;
+  }
+  .center-layout h1 {
+    font-size: 40px;
+    font-weight: 900;
+    letter-spacing: 5px;
+    margin-bottom: 12px;
+  }
+  .center-layout .sub {
+    font-size: 18px;
+    color: var(--ink-gray);
+    letter-spacing: 3px;
+    margin-bottom: 26px;
+  }
+
+  /* 翻页控制键 */
   .deck-controls {
     position: absolute;
     bottom: 14px;
@@ -221,476 +183,271 @@
     gap: 8px;
     z-index: 10;
   }
-  .btn-ctrl {
-    background: rgba(255, 255, 255, 0.9);
-    border: 1px solid var(--border-light);
-    width: 28px;
-    height: 28px;
+  .ctrl-btn {
+    background: rgba(29,30,32,0.08);
+    border: none;
+    width: 26px;
+    height: 26px;
     cursor: pointer;
     border-radius: 50%;
-    font-size: 14px;
-    color: var(--text-dark);
+    font-size: 13px;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
-    transition: all 0.2s ease;
   }
-  .btn-ctrl:hover { background: var(--macaron-yellow); transform: scale(1.08); }
+  .ctrl-btn:hover { background: rgba(180,56,50,0.15); color: var(--cinnabar); }
 </style>
 </head>
 <body>
 
 <div class="deck-container">
-  <!-- 通用背景漂浮云朵与星星 -->
-  <div class="bg-decor cloud" style="top: 20px; left: 35px; width: 44px; height: 22px;"></div>
-  <div class="bg-decor star" style="top: 25px; right: 50px;">★</div>
-  <div class="bg-decor" style="bottom: 28px; left: 45px; width: 10px; height: 10px; background: var(--macaron-green); border-radius: 50%;"></div>
-
-  <!-- ================= P1: 封面页 ================= -->
+  <!-- 第 1 页：封面 -->
   <div class="slide active">
-    <!-- 背景小动物：左上角飞翔小信鸽，右下角探头萌兔 -->
-    <svg class="mascot" style="top: 35px; left: 40px; width: 60px; height: 50px;" viewBox="0 0 60 50">
-      <!-- 萌系小信鸽/小鸟 -->
-      <path d="M10,25 Q25,10 40,22 Q50,26 48,34 Q38,40 24,36 Z" fill="#d8ecf8" />
-      <circle cx="42" cy="24" r="2" fill="#374151" />
-      <polygon points="46,26 52,28 46,31" fill="#fbd38d" />
-      <circle cx="38" cy="28" r="3" fill="#ffdce2" />
-      <path d="M22,28 Q12,18 24,18 Z" fill="#bfe1f6" />
-    </svg>
-
-    <svg class="mascot" style="bottom: 15px; right: 40px; width: 75px; height: 75px;" viewBox="0 0 80 80">
-      <!-- 探头小兔子 -->
-      <ellipse cx="28" cy="22" rx="6" ry="18" fill="#ffffff" stroke="#ffdce2" stroke-width="2" />
-      <ellipse cx="52" cy="22" rx="6" ry="18" fill="#ffffff" stroke="#ffdce2" stroke-width="2" />
-      <ellipse cx="28" cy="22" rx="3" ry="12" fill="#ffdce2" />
-      <ellipse cx="52" cy="22" rx="3" ry="12" fill="#ffdce2" />
-      <circle cx="40" cy="50" r="26" fill="#ffffff" stroke="#f1f5f9" stroke-width="2" />
-      <circle cx="32" cy="48" r="2.5" fill="#374151" />
-      <circle cx="48" cy="48" r="2.5" fill="#374151" />
-      <polygon points="38,54 42,54 40,57" fill="#f497a9" />
-      <circle cx="28" cy="55" r="4.5" fill="#ffdce2" />
-      <circle cx="52" cy="55" r="4.5" fill="#ffdce2" />
-    </svg>
-
-    <div class="center-box">
-      <div style="margin-bottom: 14px;"><span class="header-tag">✨ 元气启航</span></div>
-      <h1>智绘未来 · 萌新启程</h1>
-      <div class="sub">通信俱乐部技术部 · 竞选答辩</div>
-      <div style="background: rgba(255,255,255,0.75); padding: 8px 26px; border-radius: 50px; font-size: 13.5px; color: var(--text-gray); border: 1.5px solid var(--border-light);">
-        竞选人：罗懿璇 &nbsp;|&nbsp; 班级：人工智能二班[cite: 2] &nbsp;|&nbsp; 政治面貌：共青团员[cite: 2]
+    <div class="center-layout">
+      <div style="margin-bottom: 14px;"><span class="seal">笃行修身</span></div>
+      <h1>格物致知 · 智联未来</h1>
+      <div class="sub">信息与电气工程学院 · 通信俱乐部技术部竞选答辩</div>
+      <div style="font-size: 14px; color: var(--ink-gray); line-height: 2;">
+        竞选人：杨天宇 &nbsp;|&nbsp; 班级：电卓三班 &nbsp;|&nbsp; 政治面貌：共青团员
       </div>
     </div>
     <div class="slide-footer">
-      <span>通信俱乐部技术部 · 竞选答辩[cite: 2]</span>
+      <span>通信俱乐部技术部竞选答辩</span>
       <span>01 / 11</span>
     </div>
   </div>
 
-  <!-- ================= P2: 目录页 ================= -->
+  <!-- 第 2 页：目录 -->
   <div class="slide">
-    <!-- 抱铅笔的软萌小熊 -->
-    <svg class="mascot" style="bottom: 25px; left: 45px; width: 65px; height: 65px;" viewBox="0 0 70 70">
-      <circle cx="20" cy="22" r="8" fill="#fde2b4" />
-      <circle cx="50" cy="22" r="8" fill="#fde2b4" />
-      <circle cx="35" cy="40" r="22" fill="#fde2b4" />
-      <ellipse cx="35" cy="44" rx="10" ry="7" fill="#ffffff" />
-      <circle cx="28" cy="38" r="2" fill="#374151" />
-      <circle cx="42" cy="38" r="2" fill="#374151" />
-      <ellipse cx="35" cy="43" rx="3" ry="2" fill="#374151" />
-      <circle cx="25" cy="43" r="3.5" fill="#ffdce2" />
-      <circle cx="45" cy="43" r="3.5" fill="#ffdce2" />
-    </svg>
-
     <div class="slide-header">
-      <div>
-        <span class="header-tag">CONTENTS</span>
-        <h2>汇报导航 · 目录</h2>
-      </div>
-      <div class="chapter-indicator">纲要总览</div>
+      <h2>目次 · 卷轴</h2>
+      <div class="chapter">纲目导引</div>
     </div>
-    <div class="grid-3" style="grid-template-columns: repeat(5, 1fr); gap: 10px;">
-      <div class="cute-card blue-accent"><h3>01 初识</h3><p>个人简介与特质[cite: 2]</p></div>
-      <div class="cute-card pink-accent"><h3>02 研学</h3><p>AI与绘画特长[cite: 2]</p></div>
-      <div class="cute-card yellow-accent"><h3>03 认知</h3><p>对技术部的理解[cite: 2]</p></div>
-      <div class="cute-card green-accent"><h3>04 展示</h3><p>手绘灵感才艺秀[cite: 2]</p></div>
-      <div class="cute-card blue-accent"><h3>05 规划</h3><p>未来三步走设想[cite: 2]</p></div>
+    <div class="content-grid-3" style="grid-template-columns: repeat(5, 1fr); gap: 10px;">
+      <div class="ink-card highlight"><h3>壹 · 初识</h3><p>个人履历与求真品格</p></div>
+      <div class="ink-card"><h3>贰 · 技长</h3><p>敏学善思与务实专长</p></div>
+      <div class="ink-card"><h3>叁 · 沟壑</h3><p>部门认知与协作意识</p></div>
+      <div class="ink-card highlight"><h3>肆 · 展示</h3><p>极客特色与才艺分享</p></div>
+      <div class="ink-card"><h3>伍 · 笃行</h3><p>未来蓝图与履职承诺</p></div>
     </div>
     <div class="slide-footer">
-      <span>通信俱乐部技术部 · 竞选答辩[cite: 2]</span>
+      <span>通信俱乐部技术部竞选答辩</span>
       <span>02 / 11</span>
     </div>
   </div>
 
-  <!-- ================= P3: 初识其人 ================= -->
+  <!-- 第 3 页：初识其人 -->
   <div class="slide">
-    <!-- 右上角 Q 版短发学生插画形象 -->
-    <svg class="mascot" style="top: 20px; right: 55px; width: 60px; height: 60px;" viewBox="0 0 65 65">
-      <!-- 头发与脸庞 -->
-      <ellipse cx="32" cy="30" rx="18" ry="16" fill="#374151" />
-      <circle cx="32" cy="32" r="14" fill="#ffebd9" />
-      <!-- 刘海 -->
-      <path d="M18,28 Q32,36 46,28 Q32,18 18,28 Z" fill="#374151" />
-      <!-- 发夹 -->
-      <circle cx="22" cy="24" r="3" fill="#fbd38d" />
-      <!-- 眼睛与腮红 -->
-      <circle cx="27" cy="33" r="1.8" fill="#374151" />
-      <circle cx="37" cy="33" r="1.8" fill="#374151" />
-      <circle cx="24" cy="37" r="3" fill="#ffdce2" />
-      <circle cx="40" cy="37" r="3" fill="#ffdce2" />
-      <!-- 领口 -->
-      <path d="M22,46 Q32,52 42,46 L42,54 L22,54 Z" fill="#d8ecf8" />
-    </svg>
-
     <div class="slide-header">
-      <div>
-        <span class="header-tag">CHAPTER 01</span>
-        <h2>初识懿璇 · 萌新档案[cite: 2]</h2>
-      </div>
-      <div class="chapter-indicator">基本情况</div>
+      <h2>初识其人 · 严谨笃志</h2>
+      <div class="chapter">壹 · 个人履历</div>
     </div>
-    <div class="grid-3">
-      <div class="cute-card blue-accent">
-        <h3>基本身份 🌸</h3>
-        <p>来自人工智能二班，共青团员[cite: 2]。恪守学生本职，怀揣探索前沿工程的初心与热情[cite: 2]。</p>
+    <div class="content-grid-3">
+      <div class="ink-card highlight">
+        <h3>基本底色 <span class="seal">身份</span></h3>
+        <p>来自电卓三班，共青团员。恪守求真品性，立足工科本色，具备良好的政治素养与大局观。</p>
       </div>
-      <div class="cute-card pink-accent">
-        <h3>性格特质 ☀️</h3>
-        <p>性格开朗，善于和同学沟通交流[cite: 2]。待人亲和友善，在集体合作中具备良好的同理心[cite: 2]。</p>
+      <div class="ink-card">
+        <h3>素养志趣 <span class="seal">博览</span></h3>
+        <p>手不释卷，热爱前沿阅读。尤其专注于人工智能技术与电子通信知识的学习沉淀，保持自驱成长。</p>
       </div>
-      <div class="cute-card yellow-accent">
-        <h3>行事作风 🌿</h3>
-        <p>做事踏实细致、有较好的执行力[cite: 2]。面对托付认真负责，保持谦逊求教的心态[cite: 2]。</p>
+      <div class="ink-card">
+        <h3>处事作风 <span class="seal">务实</span></h3>
+        <p>做事严谨有条理，善于归纳总结。对待各项事务细致负责，讲求高效落地与闭环反馈。</p>
       </div>
     </div>
     <div class="slide-footer">
-      <span>通信俱乐部技术部 · 竞选答辩[cite: 2]</span>
+      <span>通信俱乐部技术部竞选答辩</span>
       <span>03 / 11</span>
     </div>
   </div>
 
-  <!-- ================= P4: 核心优势 1 ================= -->
+  <!-- 第 4 页：核心优势 1 -->
   <div class="slide">
-    <!-- 戴着耳机的极客小猫咪 -->
-    <svg class="mascot" style="bottom: 30px; right: 50px; width: 65px; height: 60px;" viewBox="0 0 70 65">
-      <polygon points="20,25 26,10 34,22" fill="#d8ecf8" />
-      <polygon points="50,25 44,10 36,22" fill="#d8ecf8" />
-      <circle cx="35" cy="35" r="20" fill="#ffffff" stroke="#d8ecf8" stroke-width="2" />
-      <circle cx="28" cy="34" r="2" fill="#374151" />
-      <circle cx="42" cy="34" r="2" fill="#374151" />
-      <polygon points="33,39 37,39 35,41" fill="#f497a9" />
-      <!-- 蓝色耳机圈 -->
-      <path d="M15,35 A20,20 0 0,1 55,35" fill="none" stroke="#90cdf4" stroke-width="4" stroke-linecap="round" />
-      <circle cx="15" cy="35" r="5" fill="#90cdf4" />
-      <circle cx="55" cy="35" r="5" fill="#90cdf4" />
-    </svg>
-
     <div class="slide-header">
-      <div>
-        <span class="header-tag">CHAPTER 02</span>
-        <h2>研学优势 · 敏求笃思</h2>
-      </div>
-      <div class="chapter-indicator">优势（一）</div>
+      <h2>技长于心 · 敏学致知</h2>
+      <div class="chapter">贰 · 核心优势（一）</div>
     </div>
-    <div class="grid-2">
-      <div class="cute-card green-accent">
-        <h3>人工智能专业基础 💻</h3>
-        <p>具备计算机基础与算法逻辑认知，对数据、智能应用有自主钻研的习惯[cite: 2]。</p>
+    <div class="content-grid-2">
+      <div class="ink-card highlight">
+        <h3>对通信与电子技术的自驱热爱</h3>
+        <p>对硬件电路、通信原理抱有浓厚兴趣，能够主动追踪行业技术动态，享受探索未知的乐趣。</p>
       </div>
-      <div class="cute-card blue-accent">
-        <h3>钻研通信与电子技术 📡</h3>
-        <p>对通信科创抱有浓厚兴趣，乐于主动接触新技术，面对硬核知识能沉下心梳理吸收[cite: 2]。</p>
+      <div class="ink-card">
+        <h3>快速吸收与知识迁移能力</h3>
+        <p>面对复杂陌生的专业新知与开发工具，善于查阅官方文档与技术指南，短时间内建立知识骨架并上手实践。</p>
       </div>
     </div>
     <div class="slide-footer">
-      <span>通信俱乐部技术部 · 竞选答辩[cite: 2]</span>
+      <span>通信俱乐部技术部竞选答辩</span>
       <span>04 / 11</span>
     </div>
   </div>
 
-  <!-- ================= P5: 核心优势 2 ================= -->
+  <!-- 第 5 页：核心优势 2 -->
   <div class="slide">
-    <!-- 拿着画笔的小画家小兔 -->
-    <svg class="mascot" style="top: 25px; right: 55px; width: 60px; height: 60px;" viewBox="0 0 70 70">
-      <ellipse cx="26" cy="18" rx="5" ry="14" fill="#ffffff" />
-      <ellipse cx="44" cy="18" rx="5" ry="14" fill="#ffffff" />
-      <circle cx="35" cy="38" r="18" fill="#ffffff" />
-      <!-- 画家贝雷帽 -->
-      <ellipse cx="35" cy="25" rx="15" ry="6" fill="#fbd38d" />
-      <circle cx="35" cy="20" r="2" fill="#fbd38d" />
-      <circle cx="30" cy="36" r="1.8" fill="#374151" />
-      <circle cx="40" cy="36" r="1.8" fill="#374151" />
-      <circle cx="26" cy="40" r="3" fill="#ffdce2" />
-      <circle cx="44" cy="40" r="3" fill="#ffdce2" />
-      <!-- 小画笔 -->
-      <line x1="50" y1="45" x2="62" y2="35" stroke="#f497a9" stroke-width="3" stroke-linecap="round" />
-    </svg>
-
     <div class="slide-header">
-      <div>
-        <span class="header-tag">CHAPTER 02</span>
-        <h2>美育特长 · 视觉赋能</h2>
-      </div>
-      <div class="chapter-indicator">优势（二）</div>
+      <h2>技长于心 · 严谨务实</h2>
+      <div class="chapter">贰 · 核心优势（二）</div>
     </div>
-    <div class="grid-2">
-      <div class="cute-card pink-accent">
-        <h3>擅长手绘与绘画创作 🎨</h3>
-        <p>热爱绘画艺术，审美在线，能独立完成海报设计与宣传视觉素材制作[cite: 2]。</p>
+    <div class="content-grid-3">
+      <div class="ink-card">
+        <h3>文档资料严谨归纳</h3>
+        <p>擅长文字梳理与材料汇总，对格式排版与数据严谨度要求严苛，杜绝马虎与疏漏。</p>
       </div>
-      <div class="cute-card yellow-accent">
-        <h3>助力科创项目成果展示 📑</h3>
-        <p>擅长让硬核技术变得通俗生动，能协助美化科创汇报材料与推文排版，赋能团队形象[cite: 2]。</p>
+      <div class="ink-card highlight">
+        <h3>办公软件踏实功底</h3>
+        <p>熟练运用 Word、Excel 等办公工具完成日常信息整理与表格制作，保障部门日常事务条理分明。</p>
+      </div>
+      <div class="ink-card">
+        <h3>闭环执行力</h3>
+        <p>遇到复杂繁杂的任务不拖延，坚持事事有回音、件件有着落，能经受住繁琐后勤工作的检验。</p>
       </div>
     </div>
     <div class="slide-footer">
-      <span>通信俱乐部技术部 · 竞选答辩[cite: 2]</span>
+      <span>通信俱乐部技术部竞选答辩</span>
       <span>05 / 11</span>
     </div>
   </div>
 
-  <!-- ================= P6: 核心优势 3 ================= -->
+  <!-- 第 6 页：核心优势 3 -->
   <div class="slide">
-    <!-- 肩并肩坐在一起的小动物伙伴（小兔和小熊） -->
-    <svg class="mascot" style="bottom: 25px; left: 45px; width: 75px; height: 50px;" viewBox="0 0 90 60">
-      <!-- 小熊 -->
-      <circle cx="25" cy="18" r="5" fill="#fde2b4" />
-      <circle cx="45" cy="18" r="5" fill="#fde2b4" />
-      <circle cx="35" cy="34" r="16" fill="#fde2b4" />
-      <circle cx="30" cy="32" r="1.5" fill="#374151" />
-      <circle cx="40" cy="32" r="1.5" fill="#374151" />
-      <!-- 小兔靠着小熊 -->
-      <ellipse cx="62" cy="18" rx="4" ry="12" fill="#ffffff" />
-      <circle cx="60" cy="36" r="14" fill="#ffffff" />
-      <circle cx="56" cy="35" r="1.5" fill="#374151" />
-      <circle cx="64" cy="35" r="1.5" fill="#374151" />
-      <circle cx="68" cy="39" r="2.5" fill="#ffdce2" />
-    </svg>
-
     <div class="slide-header">
-      <div>
-        <span class="header-tag">CHAPTER 02</span>
-        <h2>协同作风 · 笃实负责</h2>
-      </div>
-      <div class="chapter-indicator">优势（三）</div>
+      <h2>技长于心 · 和衷共济</h2>
+      <div class="chapter">贰 · 核心优势（三）</div>
     </div>
-    <div class="grid-3">
-      <div class="cute-card blue-accent">
-        <h3>沟通有温度 💬</h3>
-        <p>善于换位思考，乐于倾听伙伴意见，遇到分歧以包容温和的态度积极化解[cite: 2]。</p>
+    <div class="content-grid-2">
+      <div class="ink-card">
+        <h3>温和耐心的沟通心态</h3>
+        <p>善于倾听同伴见解，在讨论与任务协同中不固执己见，注重以解决问题为导向凝聚共识。</p>
       </div>
-      <div class="cute-card pink-accent">
-        <h3>做事有韧性 📝</h3>
-        <p>对待任务耐心负责，无论是前期文档整理还是现场后勤，均能做到有始有终[cite: 2]。</p>
-      </div>
-      <div class="cute-card green-accent">
-        <h3>协同强执行 🤝</h3>
-        <p>紧密配合学长学姐与部门成员，主动补位分担，做团队中可靠给力的帮手[cite: 2]。</p>
+      <div class="ink-card highlight">
+        <h3>主动思考与破局担当</h3>
+        <p>团队遇阻时主动思考解决方案，服从组织调配，甘做幕后基石，具备高度的集体协作意识。</p>
       </div>
     </div>
     <div class="slide-footer">
-      <span>通信俱乐部技术部 · 竞选答辩[cite: 2]</span>
+      <span>通信俱乐部技术部竞选答辩</span>
       <span>06 / 11</span>
     </div>
   </div>
 
-  <!-- ================= P7: 部门认知 ================= -->
+  <!-- 第 7 页：部门认知 -->
   <div class="slide">
-    <!-- 头顶天线/通信信号波的小鸽子吉祥物 -->
-    <svg class="mascot" style="top: 25px; right: 55px; width: 65px; height: 55px;" viewBox="0 0 70 60">
-      <path d="M15,30 Q30,15 48,26 Q58,30 56,40 Q44,46 28,42 Z" fill="#d4f4e2" />
-      <circle cx="50" cy="28" r="2" fill="#374151" />
-      <polygon points="54,30 62,32 54,36" fill="#fbd38d" />
-      <!-- 头顶信号天线波 -->
-      <line x1="42" y1="20" x2="42" y2="12" stroke="#9ae6b4" stroke-width="2" />
-      <circle cx="42" cy="10" r="2.5" fill="#fbd38d" />
-      <path d="M38,6 A6,6 0 0,1 46,6" fill="none" stroke="#9ae6b4" stroke-width="1.5" />
-    </svg>
-
     <div class="slide-header">
-      <div>
-        <span class="header-tag">CHAPTER 03</span>
-        <h2>心之所向 · 认识技术部[cite: 2]</h2>
-      </div>
-      <div class="chapter-indicator">部门认知</div>
+      <h2>胸中沟壑 · 明晰定位</h2>
+      <div class="chapter">叁 · 部门认知</div>
     </div>
-    <div class="grid-3">
-      <div class="cute-card yellow-accent">
-        <h3>专业研讨的阵地 📚</h3>
-        <p>是学院同学们学习通信知识、碰撞软硬件灵感的专业技术平台[cite: 2]。</p>
+    <div class="content-grid-3">
+      <div class="ink-card">
+        <h3>技术交流高地</h3>
+        <p>技术部是连接理论与实践的桥梁，为同学们提供切磋硬件设计与通信算法的优质场域。</p>
       </div>
-      <div class="cute-card blue-accent">
-        <h3>科创竞赛的摇篮 🏆</h3>
-        <p>是组队参与科创项目、备战各类学科竞赛、将理论转化为实操的孵化地[cite: 2]。</p>
+      <div class="ink-card highlight">
+        <h3>科创竞赛摇篮</h3>
+        <p>这里不仅是常规活动的承载者，更是学院筹备学科竞赛、培育优秀工程队伍的实战阵地。</p>
       </div>
-      <div class="cute-card pink-accent">
-        <h3>共赴成长的港湾 🌱</h3>
-        <p>是结识志同道合伙伴、在互助分享中共同拓宽专业视野的温暖集体[cite: 2]。</p>
+      <div class="ink-card">
+        <h3>传承共享智库</h3>
+        <p>沉淀经验讲义与项目档案，让技术有火种、经验有共享，助力俱乐部伙伴同频共进。</p>
       </div>
     </div>
     <div class="slide-footer">
-      <span>通信俱乐部技术部 · 竞选答辩[cite: 2]</span>
+      <span>通信俱乐部技术部竞选答辩</span>
       <span>07 / 11</span>
     </div>
   </div>
 
-  <!-- ================= P8: 才艺展示 ================= -->
+  <!-- 第 8 页：才艺展示 -->
   <div class="slide">
-    <!-- Q 版小女孩在画架前创作插画 -->
-    <svg class="mascot" style="bottom: 25px; right: 50px; width: 75px; height: 65px;" viewBox="0 0 85 75">
-      <!-- 画架 -->
-      <line x1="20" y1="20" x2="10" y2="65" stroke="#fbd38d" stroke-width="3" stroke-linecap="round" />
-      <line x1="40" y1="20" x2="50" y2="65" stroke="#fbd38d" stroke-width="3" stroke-linecap="round" />
-      <rect x="12" y="24" width="36" height="26" rx="3" fill="#ffffff" stroke="#90cdf4" stroke-width="2" />
-      <circle cx="30" cy="37" r="5" fill="#ffdce2" />
-      <!-- 小女孩背影/侧影 -->
-      <circle cx="62" cy="40" r="10" fill="#374151" />
-      <path d="M54,50 Q62,44 70,50 L70,68 L54,68 Z" fill="#ffdce2" />
-    </svg>
-
     <div class="slide-header">
-      <div>
-        <span class="header-tag">CHAPTER 04</span>
-        <h2>别开生面 · 才艺展示</h2>
-      </div>
-      <div class="chapter-indicator">才艺表演</div>
+      <h2>别开生面 · 极客展示</h2>
+      <div class="chapter">肆 · 现场才艺表演</div>
     </div>
-    <div class="grid-2">
-      <div class="cute-card pink-accent">
-        <h3>灵动笔触：手绘视觉速写秀 🎨</h3>
-        <p>现场展示 1 分钟手绘灵感：为通信俱乐部勾勒可爱的“科技萌物/通信小鸽”速写草图，展现原创手绘功底[cite: 2]。</p>
+    <div class="content-grid-2">
+      <div class="ink-card highlight">
+        <h3>现场演示：AI 效率工程极速秀</h3>
+        <p>以钻研 AI 的日常为依托，现场分享如何用特定结构化 Prompt 在 60 秒内拆解复杂通信原理并形成思维图谱。</p>
       </div>
-      <div class="cute-card green-accent">
-        <h3>科技与艺术的温柔融合 💡</h3>
-        <p>证明工科学子不仅拥有严谨的电路逻辑，更能拥有温暖治愈的审美表达，为技术部宣传赋能[cite: 2]！</p>
+      <div class="ink-card">
+        <h3>才艺内核与技术初心</h3>
+        <p>展现对智能工具的熟练驾驭能力，将严谨的技术探索化为现场表达艺术，契合技术部极客底色。</p>
       </div>
     </div>
     <div class="slide-footer">
-      <span>通信俱乐部技术部 · 竞选答辩[cite: 2]</span>
+      <span>通信俱乐部技术部竞选答辩</span>
       <span>08 / 11</span>
     </div>
   </div>
 
-  <!-- ================= P9: 未来规划 ================= -->
+  <!-- 第 9 页：未来规划 -->
   <div class="slide">
-    <!-- 背着小书包前行的小鸭子/小企鹅 -->
-    <svg class="mascot" style="top: 25px; right: 55px; width: 60px; height: 55px;" viewBox="0 0 65 60">
-      <ellipse cx="32" cy="35" rx="14" ry="18" fill="#fde2b4" />
-      <circle cx="35" cy="22" r="11" fill="#fde2b4" />
-      <circle cx="38" cy="20" r="2" fill="#374151" />
-      <ellipse cx="44" cy="23" rx="5" ry="3" fill="#f497a9" />
-      <!-- 小双肩包 -->
-      <rect x="14" y="28" width="8" height="14" rx="3" fill="#90cdf4" />
-    </svg>
-
     <div class="slide-header">
-      <div>
-        <span class="header-tag">CHAPTER 05</span>
-        <h2>筑梦前行 · 萌新三步走</h2>
-      </div>
-      <div class="chapter-indicator">工作规划</div>
+      <h2>笃行致远 · 履职三阶</h2>
+      <div class="chapter">伍 · 未来规划</div>
     </div>
-    <div class="grid-3">
-      <div class="cute-card green-accent">
-        <h3>1. 筑基融入 🌿</h3>
-        <p>认真完成部门分配的各项任务，做好日常活动协助，虚心向学长学姐求教学习[cite: 2]。</p>
+    <div class="content-grid-3">
+      <div class="ink-card">
+        <h3>筑基 · 严谨尽责</h3>
+        <p>做好第一责任人，严谨落实日常资料归集、会议筹备与部门文档整理，打牢后勤基础。</p>
       </div>
-      <div class="cute-card blue-accent">
-        <h3>2. 研创共进 ⚙️</h3>
-        <p>积极参与通信技术学习与沙龙，主动投身科创项目与竞赛筹备队伍[cite: 2]。</p>
+      <div class="ink-card highlight">
+        <h3>研深 · 赛创攻坚</h3>
+        <p>紧跟部门节奏，积极参与各项通信技术研讨与科创竞赛筹备，力争在实践项目中打磨实战本领。</p>
       </div>
-      <div class="cute-card pink-accent">
-        <h3>3. 宣传赋能 🎨</h3>
-        <p>负责活动海报与展示素材设计，把技术部打造成既专业又有温度的活力品牌[cite: 2]。</p>
+      <div class="ink-card">
+        <h3>传薪 · 经验分享</h3>
+        <p>主动协助举办技术沙龙，分享 AI 效率工具与软件操作心得，为俱乐部整体建设发光发热。</p>
       </div>
     </div>
     <div class="slide-footer">
-      <span>通信俱乐部技术部 · 竞选答辩[cite: 2]</span>
+      <span>通信俱乐部技术部竞选答辩</span>
       <span>09 / 11</span>
     </div>
   </div>
 
-  <!-- ================= P10: 态度承诺 ================= -->
+  <!-- 第 10 页：工作态度 -->
   <div class="slide">
-    <!-- 双手合十认真许诺的小熊 -->
-    <svg class="mascot" style="bottom: 25px; left: 60px; width: 65px; height: 65px;" viewBox="0 0 70 70">
-      <circle cx="20" cy="22" r="7" fill="#fde2b4" />
-      <circle cx="50" cy="22" r="7" fill="#fde2b4" />
-      <circle cx="35" cy="40" r="20" fill="#fde2b4" />
-      <!-- 眯眼笑 -->
-      <path d="M26,36 Q30,32 34,36" fill="none" stroke="#374151" stroke-width="2" stroke-linecap="round" />
-      <path d="M36,36 Q40,32 44,36" fill="none" stroke="#374151" stroke-width="2" stroke-linecap="round" />
-      <circle cx="25" cy="42" r="3.5" fill="#ffdce2" />
-      <circle cx="45" cy="42" r="3.5" fill="#ffdce2" />
-      <!-- 头顶发芽小苗苗 -->
-      <path d="M35,20 Q30,12 35,8 Q40,12 35,20" fill="#9ae6b4" />
-    </svg>
-
     <div class="slide-header">
-      <div>
-        <span class="header-tag">CHAPTER 05</span>
-        <h2>真诚表态 · 温暖承诺</h2>
-      </div>
-      <div class="chapter-indicator">履职决心</div>
+      <h2>立心明志 · 允诺于行</h2>
+      <div class="chapter">伍 · 工作承诺</div>
     </div>
-    <div class="center-box" style="margin-top: 10px;">
-      <div class="bubble-box" style="max-width: 650px; text-align: left; margin-bottom: 22px;">
-        🌟 <strong>坚决服从大局调配</strong>：若能加入通信俱乐部技术部，我坚决服从部门与组织的统筹调整[cite: 2]；无论处于何种岗位，都会以饱满的热情踏实尽责，和大家一同前行[cite: 2]！
+    <div class="content-grid-2">
+      <div class="ink-card highlight">
+        <h3>服从大局统筹 <span class="seal">立信</span></h3>
+        <p>坚决服从学院与通信俱乐部的整体调度，无论身处哪个细分岗位，皆全心全意投入。</p>
       </div>
-      <div style="font-size: 13.5px; color: var(--text-gray);">
-        踏实负责 · 积极求索 · 温暖协同 · 不负托付[cite: 2]
+      <div class="ink-card">
+        <h3>行稳致远不负托付</h3>
+        <p>以踏实作风抵御浮躁，用严谨态度对抗琐碎。坚持求真务实，为通信俱乐部的稳健运转贡献新生活力。</p>
       </div>
     </div>
     <div class="slide-footer">
-      <span>通信俱乐部技术部 · 竞选答辩[cite: 2]</span>
+      <span>通信俱乐部技术部竞选答辩</span>
       <span>10 / 11</span>
     </div>
   </div>
 
-  <!-- ================= P11: 结尾鸣谢 ================= -->
+  <!-- 第 11 页：结语鸣谢 -->
   <div class="slide">
-    <!-- 欢送谢幕的萌萌动物组群（小兔 + 小猫 + 小鸽子） -->
-    <svg class="mascot" style="bottom: 18px; width: 140px; height: 60px; left: calc(50% - 70px);" viewBox="0 0 160 70">
-      <!-- 左：小猫 -->
-      <polygon points="20,30 26,18 32,28" fill="#ffdce2" />
-      <polygon points="44,30 38,18 32,28" fill="#ffdce2" />
-      <circle cx="32" cy="42" r="16" fill="#ffffff" stroke="#ffdce2" stroke-width="2" />
-      <circle cx="28" cy="40" r="1.5" fill="#374151" />
-      <circle cx="36" cy="40" r="1.5" fill="#374151" />
-      <!-- 中：小兔挥手 -->
-      <ellipse cx="74" cy="18" rx="4" ry="14" fill="#ffffff" />
-      <ellipse cx="86" cy="18" rx="4" ry="14" fill="#ffffff" />
-      <circle cx="80" cy="40" r="18" fill="#ffffff" />
-      <circle cx="75" cy="38" r="2" fill="#374151" />
-      <circle cx="85" cy="38" r="2" fill="#374151" />
-      <circle cx="71" cy="43" r="3" fill="#ffdce2" />
-      <circle cx="89" cy="43" r="3" fill="#ffdce2" />
-      <!-- 右：小熊 -->
-      <circle cx="120" cy="28" r="6" fill="#fde2b4" />
-      <circle cx="140" cy="28" r="6" fill="#fde2b4" />
-      <circle cx="130" cy="44" r="16" fill="#fde2b4" />
-      <circle cx="125" cy="42" r="1.5" fill="#374151" />
-      <circle cx="135" cy="42" r="1.5" fill="#374151" />
-    </svg>
-
-    <div class="center-box">
-      <div style="font-size: 26px; margin-bottom: 10px; color: #fed053;">✨ ★ 🌸 ★ ✨</div>
-      <h1>感谢聆听 · 期待同行！</h1>
-      <div class="sub">恳请各位老师、学长学姐批评指正</div>
-      <div style="font-size: 14px; color: var(--text-gray);">
-        答辩人：罗懿璇[cite: 2] &nbsp;|&nbsp; 人工智能二班[cite: 2] &nbsp;敬呈
+    <div class="center-layout">
+      <div style="margin-bottom: 14px;"><span class="seal">鸣谢致礼</span></div>
+      <h1>青衿之志 · 履践致远</h1>
+      <div class="sub">诚挚感谢各位评委学长学姐的聆听与指导！</div>
+      <div style="font-size: 14px; color: var(--ink-gray); line-height: 2;">
+        答辩人：杨天宇 &nbsp;|&nbsp; 电卓三班 &nbsp;|&nbsp; 敬呈
       </div>
     </div>
     <div class="slide-footer">
-      <span>通信俱乐部技术部 · 竞选答辩[cite: 2]</span>
+      <span>通信俱乐部技术部竞选答辩</span>
       <span>11 / 11</span>
     </div>
   </div>
 
-  <!-- 翻页控制键 -->
+  <!-- 控制翻页 -->
   <div class="deck-controls">
-    <button class="btn-ctrl" onclick="prevSlide()">‹</button>
-    <button class="btn-ctrl" onclick="nextSlide()">›</button>
+    <button class="ctrl-btn" onclick="prevSlide()">‹</button>
+    <button class="ctrl-btn" onclick="nextSlide()">›</button>
   </div>
 </div>
 
